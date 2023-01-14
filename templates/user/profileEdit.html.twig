@@ -1,0 +1,129 @@
+{% include 'header.html.twig' %}
+{% include 'index.html.twig' %}
+
+
+{% block body %}
+    <section id="edit" class="p-4 p-md-5" style="margin-left: 16rem">
+
+        <div class="container">
+            <h1>Edit Profile</h1>
+            <hr>
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-3">
+                    <div class="text-center">
+                        {% if app.user.image is null %}
+                            <img src="" class="avatar img-circle" style="width: 6rem ; height: 6rem ; border-radius: 50% ; border: 1px solid #ea5252">
+                        {% else %}
+                            <img src="{{ app.user.image }}" class="avatar img-circle" style="width: 6rem ; height: 6rem ; border-radius: 50% ; border: 1px solid #ea5252">
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- edit form column -->
+                <div class="col-md-9 personal-info">
+                    <h3>Personal info</h3>
+
+                    <form class="form-horizontal" role="form" method="post" action="{{ path('app_user_profile_edit' ,{'id': app.user.id} ) }}" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="{{ app.user.firstName }}" name="firstname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="{{ app.user.lastName }}" name="lastname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" value="{{ app.user.email }}" name="email">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Country:</label>
+                            <div class="col-md-8">
+                                {% if app.user.country is null %}
+                                    <input class="form-control" type="text" value="" name="country">
+                                {% else %}
+                                    <input class="form-control" type="text" value="{{ app.user.country }}" name="country">
+                                {%endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">City:</label>
+                            <div class="col-md-8">
+                                {% if app.user.city is null %}
+                                    <input class="form-control" type="text" value="" name="city">
+                                {% else %}
+                                    <input class="form-control" type="text" value="{{ app.user.city }}" name="city">
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Street Address:</label>
+                            <div class="col-md-8">
+                                {% if app.user.stAddress is null %}
+                                    <input class="form-control" type="text" value="{{ app.user.stAddress }}" name="streetAddress">
+                                {% else %}
+                                    <input class="form-control" type="text" value="{{ app.user.stAddress }}" name="streetAddress">
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">Password:</label>
+                            <div class="col-md-8">
+                                <input class="form-control" type="password" value="{{ app.user.password }}" name="password">
+                                <a href="">Reset Password</a>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Image:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="file" name="image">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label"></label>
+                            <div class="col-md-8">
+                                <input type="submit" class="btn btn-primary" value="Save">
+
+                                <span></span>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        <hr>
+    </section>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% include 'footer.html.twig' %}

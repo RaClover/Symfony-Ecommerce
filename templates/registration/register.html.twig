@@ -1,0 +1,97 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Register{% endblock %}#}
+
+ {% block stylesheets %}
+     {{ encore_entry_link_tags('login') }}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+           crossorigin="anonymous">
+     <link rel="" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+ {% endblock %}
+
+
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+                crossorigin="anonymous"></script>
+
+        <script src="https://kit.fontawesome.com/62b56c0b49.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script
+                src="https://kit.fontawesome.com/8f27d68390.js"
+                crossorigin="anonymous"
+        ></script>
+    {% endblock %}
+{% block body %}
+
+    <main class="main">
+        <div class="container">
+            <section class="wrapper">
+                <div class="heading">
+                    <h1 class="text text-large">Register</h1>
+                    <p class="text text-normal">Have an account? <span><a href="{{ path('app_login') }}" class="text text-links">Sign in</a></span>
+                    </p>
+
+                    {% for flash_error in app.flashes('verify_email_error') %}
+                        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                    {% endfor %}
+
+                </div>
+
+
+
+    {{ form_start(registrationForm) }}
+
+<div class="input-control">
+    <label for="firstname" class="input-label" hidden>FirstName</label>
+    {{ form_widget(registrationForm.firstName) }}
+</div>
+
+<div class="input-control">
+    <label for="lastname" class="input-label" hidden>LastName</label>
+    {{ form_widget(registrationForm.lastName) }}
+</div>
+
+
+<div class="input-control">
+    <label for="email" class="input-label" hidden>Email Address</label>
+    {{ form_widget(registrationForm.email) }}
+</div>
+
+
+<div class="input-control">
+    <label for="password" class="input-label" hidden>Password</label>
+    {{ form_widget(registrationForm.password) }}
+</div>
+
+    <div class="input-control ms-5">
+        <input type="submit" name="submit" class="input-submit ms-5" value="Register">
+    </div>
+    {{ form_end(registrationForm) }}
+
+    <div class="striped">
+        <span class="striped-line"></span>
+        <span class="striped-text">Or</span>
+        <span class="striped-line"></span>
+    </div>
+    <div class="method">
+        <div class="method-control">
+            <a href="#" class="method-action">
+                <span>Sign in with Google</span>
+                <ion-icon name="logo-google"></ion-icon>
+
+            </a>
+        </div>
+        <div class="method-control">
+            <a href="#" class="method-action">
+                <span>Sign in with Facebook</span>
+                <ion-icon name="logo-facebook"></ion-icon>
+
+            </a>
+        </div>
+    </div>
+    </section>
+    </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,56 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-f24dd6.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "cool": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-f24dd6.js",
+        "/build/cool.js"
+      ],
+      "css": [
+        "/build/cool.css"
+      ]
+    },
+    "detail": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/detail.css"
+      ]
+    },
+    "login": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/login.css"
+      ]
+    },
+    "checkout": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/checkout.css"
+      ]
+    },
+    "shop": {
+      "js": [
+        "/build/runtime.js"
+      ],
+      "css": [
+        "/build/shop.css"
+      ]
+    }
+  }
+}

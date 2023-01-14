@@ -5,3 +5,15 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+register:
+    path: /api/register
+    controller: App\Controller\ApiAuthController::register
+    methods: POST
+
+api_login_check:
+    path: /api/login_check
+    controller: App\Controller\ApiAuthController::getTokenUser
+test:
+    path: /api/test
+    controller: App\Controller\ApiController::test

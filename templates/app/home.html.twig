@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppController!{% endblock %}
+
+{% block body %}
+    <!-- slider section -->
+    <section class="slider_section ">
+        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+
+                <div class="carousel-item active">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6 ">
+                                <div class="detail-box">
+                                    <h1>
+                                    <span>
+                                    Sale 20% Off
+                                    </span>
+                                        <br>
+                                        On Everything
+                                    </h1>
+
+                                    <div class="btn-box">
+                                        <a href="{{ path('app_shop_page') }}" class="btn1">
+                                            Shop Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- end slider section -->
+
+
+
+
+    <!-- why us section -->
+{#    <section class="why_section layout_padding">#}
+
+{#    </section>#}
+    <!-- end why section -->
+
+    <!-- arrival section -->
+    <section class="arrival_section">
+
+    </section>
+    <!-- end arrival section -->
+
+    <!-- product section -->
+    <section class="product_section layout_padding">
+        <div class="container">
+
+            <div class="row">
+
+
+
+
+                {% for product in products %}
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <div class="box">
+                        <div class="option_container">
+                            <div class="options">
+                                <a href="{{ path('cart_add', {id: product.id}) }}" class="option1">
+                                    Add To Cart
+                                </a>
+                            </div>
+                        </div>
+                        <div class="img-box">
+                            <img src="{{ product.image }}" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                               {{ product.name }}
+                            </h5>
+                            <h6>
+                                ${{ product.price }}
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <div class="view-all-products" style="margin-top: 5rem ; margin-left: 30rem">
+                <a href="{{ path('app_shop_page') }}" class="">
+                    View All products
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- end product section -->
+
+{% endblock %}

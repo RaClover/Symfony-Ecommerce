@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+
+    <style>
+        /*body{*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF);*/
+        /*    height: 100vh;*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*}*/
+
+
+    </style>
+
+
+{#    <section class="bg-light p-3">#}
+{#        <h1>Your shopping cart</h1>#}
+{#    </section>#}
+
+{#    <table class="table">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>Product</th>#}
+{#            <th>Price</th>#}
+{#            <th>Quantity</th>#}
+{#            <th>Total</th>#}
+{#            <th>Actions</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for element in dataCart %}#}
+{#            <tr>#}
+{#                <td>{{ element.product.name }}</td>#}
+{#                <td class="text-end">{{ element.product.price }} €</td>#}
+{#                <td>{{ element.quantity }}</td>#}
+{#                <td class="text-end">{{ element.quantity * element.product.price }} €</td>#}
+{#                <td>#}
+{#                    <a href="{{path("cart_add", {id: element.product.id})}}" class="btn btn-success">#}
+{#                        <i class="bi bi-cart-plus">+</i>#}
+{#                    </a>#}
+{#                    <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn btn-warning">#}
+{#                        <i class="bi bi-cart-dash">-</i>#}
+{#                    </a>#}
+{#                    <a href="{{path("cart_delete", {id: element.product.id})}}" class="btn btn-danger">#}
+{#                        <i class="bi bi-cart-x">x</i>#}
+{#                    </a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="5" class="text-center">Your shopping cart is empty</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#        <tfoot>#}
+{#        <tr>#}
+{#            <td colspan="3">Total</td>#}
+{#            <td class="text-end">{{ total }} $</td>#}
+{#            <td>#}
+{#                <a href="{{path("cart_delete_all")}}" class="btn btn-danger">#}
+{#                    <i class="bi bi-cart-x">Clear</i>#}
+{#                </a>#}
+{#            </td>#}
+{#        </tr>#}
+{#        </tfoot>#}
+{#    </table>#}
+
+<section>
+
+</section>
+
+
+    <div class="CartContainer">
+        <div class="Header">
+            <h3 class="Heading">Shopping Cart</h3>
+        </div>
+
+        {% for element in dataCart %}
+        <div class="Cart-Items">
+            <div class="image-box">
+                <img src="{{ element.product.image }}" style="height: 120px" />
+            </div>
+            <div class="about">
+                <h1 class="title">{{ element.product.name }}</h1>
+            </div>
+            <div class="counter">
+                <a href="{{path("cart_add", {id: element.product.id})}}" class="btn">
+                    <i class="bi bi-cart-plus">+</i>
+                </a>
+
+
+                <div class="count">{{ element.quantity }}</div>
+
+
+                <a href="{{path("cart_remove", {id: element.product.id})}}" class="btn">
+                    <i class="bi bi-cart-dash">-</i>
+                </a>
+            </div>
+            <div class="prices">
+                <div class="amount">${{ element.product.price }}</div>
+                <a href="{{path("cart_delete", {id: element.product.id})}}" class="remove">
+                    <i class="bi bi-cart-x">Remove</i>
+                </a>
+            </div>
+        </div>
+        <hr>
+
+
+        {% else %}
+        <div class="about">
+            <h3 class="empty-cart" style="margin-left: 36rem ; width: 25rem">Your cart is empty</h3>
+            <p class="empty-cart-des" style="margin-left: 30rem ; width: 25rem">
+                Looks like you have not added anything to your cart<br>
+              <strong> Go to shopping page</strong> <a href="{{ path('app_shop_page') }}">Shopping Page</a>
+
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+<section style="padding: 9rem">
+    <div class="checkout">
+        <div class="total">
+            <div>
+                <div class="Subtotal">Sub-Total</div>
+            </div>
+            <div class="total-amount">${{ total }}</div>
+        </div>
+        <a href="{{ path('cart_checkout') }}">
+            <button class="button">Checkout</button>
+        </a>
+    </div>
+
+
+    <div class="removeAll">
+        <a href="{{path("cart_delete_all")}}" class="button">
+            <button class="buttonRemoveAll">Remove all</button>
+        </a>
+    </div>
+
+
+
+</section>
+
+
+    </div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/cool.css": "/build/cool.css",
+  "build/cool.js": "/build/cool.js",
+  "build/detail.css": "/build/detail.css",
+  "build/login.css": "/build/login.css",
+  "build/checkout.css": "/build/checkout.css",
+  "build/shop.css": "/build/shop.css",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-f24dd6.js": "/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_er-f24dd6.js"
+}

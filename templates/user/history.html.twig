@@ -1,0 +1,83 @@
+{% include 'header.html.twig' %}
+{% include 'index.html.twig' %}
+
+
+
+{% block body %}
+    <style>
+        #ordersContent {
+            margin-left: 26rem;
+            height: 30rem;
+        }
+    </style>
+
+
+    <section id="ordersContent" class="p-4 p-md-5">
+        <h3>sssssssssssssssssssssssssssssssssssssssssssssssssssv</h3>
+{#        <div class="table-responsive" id="table-responsive">#}
+
+{#            <table>#}
+{#                <thead>#}
+{#                <tr>#}
+{#                    <th>Order Number</th>#}
+{#                    <th>Date</th>#}
+{#                    <th>Shipped To</th>#}
+
+{#                    <th>Order Status</th>#}
+{#                    <th>Action</th>#}
+{#                </tr>#}
+{#                </thead>#}
+{#                <tbody>#}
+{#                {% for order in app.user.orders %}#}
+{#                <tr>#}
+{#                    <td data-label="Aplicações">{{ order.orderNumber }}</td>#}
+{#                    <td data-label="Projeto">{{ order.orderDate|date }}</td>#}
+{#                    <td data-label="Descrição">{{ order.user.firstName }}</td>#}
+{#                    <td data-label="Criado">{{ order.orderStatus }}</td>#}
+{#                    <td data-label="Criado"><a href="{{  path('app_user_profile_viewUserOrder', {id: order.id}) }}">View Order</a></td>#}
+
+{#                </tr>#}
+{#                {% endfor %}#}
+{#                </tbody>#}
+{#            </table>#}
+
+
+            <table class="table w-100 p-3 h-75">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+                </tbody>
+            </table>
+{#        </div>#}
+    </section>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% include 'footer.html.twig' %}
+
+

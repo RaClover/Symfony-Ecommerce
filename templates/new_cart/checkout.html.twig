@@ -1,0 +1,139 @@
+{# {% extends 'base.html.twig' %} #}
+ {% block stylesheets %}
+
+     {{ encore_entry_link_tags('checkout') }}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+           rel="stylesheet">
+
+     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ {% endblock %}
+
+
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('cool') }}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+                crossorigin="anonymous"></script>
+
+    {% endblock %}
+{% block body %}
+
+    <div class="card">
+        {% for message in app.flashes('successOrder') %}
+            <div class="card-top border-bottom text-center alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="card-body">
+            <div class="row upper">
+            </div>
+
+
+            <div class="row">
+
+
+                <div class="col-md-7">
+                    <div class="left border">
+
+
+                        {{ form_start(formCheckout) }}
+                        <span>First Name:</span>
+                        {{ form_widget(formCheckout.checkoutFirstName) }}
+
+
+                        <span>Last Name:</span>
+                        {{ form_widget(formCheckout.checkoutLastName) }}
+
+
+                        <span>Email:</span>
+                        {{ form_widget(formCheckout.checkoutEmail) }}
+                        <span>Country:</span>
+                        {{ form_widget(formCheckout.checkoutCountry) }}
+                        <span>City:</span>
+                        {{ form_widget(formCheckout.checkoutCity) }}
+
+                        <span>Street Address:</span>
+                        {{ form_widget(formCheckout.checkoutStreet) }}
+
+
+                        <span>Phone Number:</span>
+                        {{ form_widget(formCheckout.checkoutPhone) }}
+
+                        <div class="row">
+                        </div>
+
+
+                        <button class="btn bg-secondary" type="submit">Place Order</button>
+                        {#                        </form> #}
+                        {{ form_end(formCheckout) }}
+                    </div>
+                </div>
+
+
+                <div class="col-md-5">
+                    <div class="right border">
+                        <div class="header">Order Summary</div>
+
+                        {% for  cartProduct in dataCart %}
+                            <div class="row item">
+                                <div class="col-4 align-self-center">
+                                    <img class="img-fluid" src="{{ cartProduct.product.image }}">
+                                </div>
+                                <div class="col-8">
+                                    <div class="row"><b>${{ cartProduct.product.price }}</b></div>
+                                    <div class="row text-muted">{{ cartProduct.product.description }}</div>
+                                    <div class="row">Qty:{{ cartProduct.quantity }}</div>
+                                </div>
+                            </div>
+
+
+                        {% endfor %}
+
+
+                        {#                        <div class="row item"> #}
+                        {#                            <div class="col-4 align-self-center"><img class="img-fluid" src="https://i.imgur.com/Ew8NzKr.jpg"></div> #}
+                        {#                            <div class="col-8"> #}
+                        {#                                <div class="row"><b>$ 19.99</b></div> #}
+                        {#                                <div class="row text-muted">Be Legandary Lipstick-Sheer Navy Cream</div> #}
+                        {#                                <div class="row">Qty:1</div> #}
+                        {#                            </div> #}
+                        {#                        </div> #}
+                        <hr>
+
+
+                        <div class="row lower">
+                            <div class="col text-left">Subtotal</div>
+                            <div class="col text-right">$ {{ total }}</div>
+                        </div>
+                        <div class="row lower">
+                            <div class="col text-left">Delivery</div>
+                            <div class="col text-right">Free</div>
+                        </div>
+                        <div class="row lower">
+                            <div class="col text-left"><b>Total to pay</b></div>
+                            <div class="col text-right"><b>$ {{ total }}</b></div>
+                        </div>
+                        <a href="{{ path('cart_index') }}">Edit cart</a><br>
+
+                        <a href="{{ path('app_shop_page') }}">Back To Shopping Page</a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
