@@ -6,6 +6,7 @@ use App\Form\ContactFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductsRepository;
 use App\Repository\SubCategoryRepository;
+use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -91,9 +92,50 @@ class AppController extends AbstractController
 
 
         return $this->render('app/shop.html.twig' , [
+            'subCategory' => $subCategory ,
             'categories' => $categories,
             'products' => $allProducts
         ]);
+    }
+
+
+    #[Route ('/catalogSearch' , name: 'catalogSearch')]
+    public function searchForProduct
+    (
+        Request $request ,
+        ProductsRepository $productsRepository,
+        CategoryRepository $categoryRepository,
+        SubCategoryRepository $subCategoryRepository,
+        PaginatorInterface $paginator
+    ):Response
+    {
+        $searchedProduct = $request->get('search');
+        $products = $productsRepository->findBy(['name' => $searchedProduct]);
+        $categories = $categoryRepository->findAll();
+        $allProducts = $paginator->paginate(
+            $products,
+            $request->query->getInt('page' , 1),
+            12
+        );
+        return $this->render('app/shop.html.twig' , [
+            'categories' => $categories,
+            'products' => $allProducts
+        ]);
+    }
+
+
+
+    #[Route ('/asideFilter' , name: 'asideFilter')]
+    public function asideFilter
+    (
+        Request $request ,
+        ProductsRepository $productsRepository ,
+        UserRepository $userRepository
+    ):Response
+    {
+
+        $ROLE = "ROLE_ADMIN";
+       dd($productsRepository->findBy(['sizes' => $this->json("S")]));
     }
 
 
@@ -130,5 +172,5 @@ class AppController extends AbstractController
     }
 
 
-    
+
 }

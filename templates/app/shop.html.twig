@@ -40,11 +40,20 @@
 
 
 
+    {% if products is empty %}
+        <div class="alert alert-warning d-flex w-75 mx-auto p-3" role="alert">
+            <div class="align-middle mx-auto">
+                <h4>No Products Found !
+                    <a href="{{ path('app_shop_page') }}">Shop Page</a>
+                </h4>
+
+            </div>
+        </div>
+    {% else %}
 
     <!-- product section -->
     <section class="product_section layout_padding" style="display: grid ; grid-template-columns: auto auto ;">
-
-
+        {% if subCategory is defined %}
         <aside class="col-md-3" style="margin-left: 4rem">
             <div class="card" style="width: 20rem">
                 <article class="filter-group">
@@ -76,13 +85,13 @@
                         <header class="card-header">
                             <a href="#" data-toggle="collapse" data-target="#collapse_3" aria-expanded="true" class="">
                                 <i class="icon-control fa fa-chevron-down"></i>
-                                <h2 class="title">Price range </h2>
+                                <h2 class="title">Price</h2>
                             </a>
                         </header>
                         <div class="filter-content collapse show" id="collapse_3" style="">
 
                             <div class="card-body">
-                                <input type="range" class="custom-range" min="0" max="100" name="">
+{#                                <input type="range" class="custom-range" min="0" max="100" name="">#}
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Min</label>
@@ -98,39 +107,38 @@
 
                         </div>
                     </article> <!-- filter-group .// -->
-{#                    <article class="filter-group">#}
-{#                        <header class="card-header">#}
-{#                            <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">#}
-{#                                <i class="icon-control fa fa-chevron-down"></i>#}
-{#                                <h2 class="title">Sizes </h2>#}
-{#                            </a>#}
-{#                        </header>#}
-{#                        <div class="filter-content collapse show" id="collapse_4" style="">#}
-{#                            <div class="card-body">#}
-{#                                <label class="checkbox-btn">#}
-{#                                    <input type="checkbox">#}
-{#                                    <span class="btn btn-light"> S </span>#}
-{#                                </label>#}
+                    <article class="filter-group">
+                        <header class="card-header">
+                            <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
+                                <i class="icon-control fa fa-chevron-down"></i>
+                                <h2 class="title">Sizes </h2>
+                            </a>
+                        </header>
+                        <div class="filter-content collapse show" id="collapse_4" style="">
+                            <div class="card-body">
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" class="radio">
+                                    <span class="btn btn-light w-100"> S </span>
+                                </label>
 
-{#                                <label class="checkbox-btn">#}
-{#                                    <input type="checkbox">#}
-{#                                    <span class="btn btn-light"> M </span>#}
-{#                                </label>#}
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" class="radio">
+                                    <span class="btn btn-li ght w-100"> M </span>
+                                </label>
 
-{#                                <label class="checkbox-btn">#}
-{#                                    <input type="checkbox">#}
-{#                                    <span class="btn btn-light"> L </span>#}
-{#                                </label>#}
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" class="radio">
+                                    <span class="btn btn-light w-100"> L </span>
+                                </label>
 
-{#                                <label class="checkbox-btn">#}
-{#                                    <input type="checkbox">#}
-{#                                    <span class="btn btn-light"> XXL </span>#}
-{#                                </label>#}
-{#                            </div><!-- card-body.// -->#}
-{#                        </div>#}
-{#                        <button class="btn btn-primary">Apply</button>#}
-{#                    </article> <!-- filter-group .// -->#}
-{#                    #}
+                                <label class="checkbox-btn">
+                                    <input type="checkbox" class="radio">
+                                    <span class="btn btn-light w-100"> XXL </span>
+                                </label>
+                            </div><!-- card-body.// -->
+                        </div>
+                    </article> <!-- filter-group .// -->
+
 
                     <div class="mt-3">
                         <input type="submit" value="Apply" class="btn text-center mb-4">
@@ -141,23 +149,7 @@
             </div> <!-- card.// -->
 
         </aside>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        {% endif %}
         <div class="container">
             <div class="row">
 
@@ -165,11 +157,11 @@
                     <div class="border-bottom mb-4 pb-4">
                         <div class="form-inline">
                             <select class="mr-2 form-control">
-                                <option>Most Popular</option>
+                                <option>Most Popular</option> class="radio"
                                 <option>New items</option>
                                 <option>Cheap First</option>
                                 <option>Expensive First</option>
-                                <option>High Rating</option>
+{#                                <option>High Rating</option>#}
                             </select>
                         </div>
                     </div>
@@ -182,6 +174,9 @@
 
 
                 {% for product in products %}
+
+
+
                     <div class="col-sm-6 col-md-4 col-lg-4">
                         <div class="box">
                             <div class="option_container">
@@ -204,6 +199,7 @@
                             </div>
                         </div>
                     </div>
+
                 {% endfor %}
 
             </div>
@@ -214,7 +210,9 @@
         </div>
 
 
+
     </section>
+    {% endif %}
     <!-- end product section -->
 
     <script>

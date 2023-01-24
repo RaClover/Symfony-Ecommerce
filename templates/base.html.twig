@@ -67,7 +67,7 @@
                     </li>
 
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('admin') }}">Dashboard</a>
+                            <a class="nav-link active" aria-current="page" href="{{ path('theAdmin') }}">Dashboard</a>
                         </li>
                     {% elseif is_granted('ROLE_USER') %}
                     <li class="nav-item">
@@ -80,6 +80,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_contact_page') }}">Contact</a>
                     </li>
+
+                        <form class="d-flex" action="{{ path('catalogSearch') }}">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                            <button class="btn btn-outline-danger" type="submit" style="width: 30%">Search</button>
+                        </form>
 
 
                     {% else %}

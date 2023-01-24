@@ -24,6 +24,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use phpDocumentor\Reflection\Types\This;
 use PhpParser\Node\Expr\Yield_;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,9 +46,15 @@ class AdminDashboardController extends AbstractDashboardController
     }
 
 
-    #[Route('/admin', name: 'admin')]
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
+    #[Route('/theAdmin', name: 'theAdmin')]
     public function index(): Response
     {
+
+
 //        return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend

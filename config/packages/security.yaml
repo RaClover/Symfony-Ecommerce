@@ -10,18 +10,6 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
-        login:
-            pattern: ^/api/login
-            stateless: true
-            json_login:
-                check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        api:
-            pattern: ^/api
-            stateless: true
-            provider: app_user_provider
-            jwt: ~
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -34,19 +22,6 @@ security:
                 path: app_logout
                 # where to redirect after logout
                 target: app_login
-            remember_me:
-                name: CoolFashion
-                secret: '%kernel.secret%'
-                lifetime: 604800
-        admin:
-            lazy: true
-            provider: app_user_provider
-            custom_authenticator:
-                    - App\Security\AdminLoginFormAuthenticator
-            logout:
-                path: app_logout
-                # where to redirect after logout
-                target: app_admin_login
             remember_me:
                 name: CoolFashion
                 secret: '%kernel.secret%'
@@ -65,9 +40,6 @@ security:
         - { path: ^/shop, roles: ROLE_USER }
         - { path: ^/cart, roles: ROLE_USER }
         - { path: ^/user/profile, roles: ROLE_USER }
-        - { path: ^/api/register, roles: PUBLIC_ACCESS }
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
 
 when@test:
     security:

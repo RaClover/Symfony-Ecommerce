@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use function Symfony\Component\String\s;
 
 /**
  * @extends ServiceEntityRepository<Products>
@@ -44,50 +45,22 @@ class ProductsRepository extends ServiceEntityRepository
 
 
 
-
-
-
-
-    public function findAllProducts()
+    public function search($min = null, $max = null)
     {
+        $qb = $this->createQueryBuilder('p');
+        if (!is_null($min)) {
+            $qb->andWhere('p.price >= :min')
+                ->setParameter('min', $min);
+        }
+        if (!is_null($max)) {
+            $qb->andWhere('p.price <= :max')
+                ->setParameter('max', $max);
+        }
 
+        return $qb->getQuery()->getResult();
     }
 
 
 
 
-
-
-
-
-
-
-
-    
-    
-
-//    /**
-//     * @return Products[] Returns an array of Products objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Products
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
